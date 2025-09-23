@@ -7,15 +7,18 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1200
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20
 #include <dt-bindings/zmk/pointing.h>
 
 / {
-    combos {
-        compatible = "zmk,combos";
-
-        layer3 {
-            bindings = <&mo 3>;
-            key-positions = <37 40>;
+    behaviors {
+        // Double tap toggles the mouse layer; hold mirrors the original Raise key behavior.
+        rse_mouse_layer: behavior_tap_dance {
+            compatible = "zmk,behavior-tap-dance";
+            tapping-term-ms = <200>;
+            hold-action = <&mo 2>;
+            bindings = <&mo 2>, <&tog 3>;
         };
     };
 
@@ -35,7 +38,7 @@
 &kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T        &kp Y    &kp U  &kp I      &kp O    &kp P     &kp BSPC
 &kp LCTRL  &kp A  &kp S  &kp D     &kp F  &kp G        &kp H    &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
 &kp LSHFT  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp N    &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
-                         &kp LGUI  &mo 1  &kp SPACE    &kp RET  &mo 2  &kp RALT
+                         &kp LGUI  &mo 1  &kp SPACE    &kp RET  &rse_mouse_layer  &kp RALT
             >;
         };
 
