@@ -16,8 +16,8 @@
         // Double tap toggles the mouse layer; hold mirrors the original Raise key behavior.
         rse_mouse_layer: behavior_tap_dance {
             compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
             tapping-term-ms = <200>;
-            hold-action = <&mo 2>;
             bindings = <&mo 2>, <&tog 3>;
         };
     };
