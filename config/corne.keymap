@@ -34,17 +34,35 @@
             bindings = <&mo 1>, <&tog 4>;
         };
 
+        rgb_on_red: behavior_macro_rgb_on_red {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            bindings = <&rgb_ug RGB_ON>,
+                       <&rgb_ug RGB_MODE_PLAIN>,
+                       <&rgb_ug RGB_SET_COLOR 0xff 0x00 0x00>;
+        };
+
+        rgb_on_blue: behavior_macro_rgb_on_blue {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            bindings = <&rgb_ug RGB_ON>,
+                       <&rgb_ug RGB_MODE_PLAIN>,
+                       <&rgb_ug RGB_SET_COLOR 0x00 0x00 0xff>;
+        };
+
         rgb_mouse_layer: behavior_layer_state {
             compatible = "zmk,behavior-layer-state";
             #binding-cells = <1>;
-            bindings = <&rgb_ug RGB_ON &rgb_ug RGB_MODE_PLAIN &rgb_ug RGB_SET_COLOR(0xff, 0x00, 0x00)>,
+            bindings = <&rgb_on_red>,
                        <&rgb_ug RGB_OFF>;
         };
 
         rgb_num_layer: behavior_layer_state {
             compatible = "zmk,behavior-layer-state";
             #binding-cells = <1>;
-            bindings = <&rgb_ug RGB_ON &rgb_ug RGB_MODE_PLAIN &rgb_ug RGB_SET_COLOR(0x00, 0x00, 0xff)>,
+            bindings = <&rgb_on_blue>,
                        <&rgb_ug RGB_OFF>;
         };
 
