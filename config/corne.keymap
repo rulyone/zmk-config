@@ -37,14 +37,14 @@
         rgb_mouse_layer: behavior_layer_state {
             compatible = "zmk,behavior-layer-state";
             #binding-cells = <1>;
-            bindings = <&rgb_ug RGB_SLD(0xff, 0x00, 0x00)>,
+            bindings = <&rgb_ug RGB_ON &rgb_ug RGB_MODE_PLAIN &rgb_ug RGB_SET_COLOR 0xff 0x00 0x00>,
                        <&rgb_ug RGB_OFF>;
         };
 
         rgb_num_layer: behavior_layer_state {
             compatible = "zmk,behavior-layer-state";
             #binding-cells = <1>;
-            bindings = <&rgb_ug RGB_SLD(0x00, 0x00, 0xff)>,
+            bindings = <&rgb_ug RGB_ON &rgb_ug RGB_MODE_PLAIN &rgb_ug RGB_SET_COLOR 0x00 0x00 0xff>,
                        <&rgb_ug RGB_OFF>;
         };
 
