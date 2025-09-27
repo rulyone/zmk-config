@@ -39,8 +39,7 @@
             #binding-cells = <0>;
             wait-ms = <10>;
             bindings = <&rgb_ug RGB_ON>,
-                       <&rgb_ug RGB_MODE_PLAIN>,
-                       <&rgb_ug RGB_SET_COLOR 0xff 0x00 0x00>;
+                       <&rgb_ug RGB_COLOR_HSB(0, 100, 100)>;
         };
 
         rgb_on_blue: behavior_macro_rgb_on_blue {
@@ -48,8 +47,7 @@
             #binding-cells = <0>;
             wait-ms = <10>;
             bindings = <&rgb_ug RGB_ON>,
-                       <&rgb_ug RGB_MODE_PLAIN>,
-                       <&rgb_ug RGB_SET_COLOR 0x00 0x00 0xff>;
+                       <&rgb_ug RGB_COLOR_HSB(240, 100, 100)>;
         };
 
         rgb_mouse_layer: behavior_layer_state {
