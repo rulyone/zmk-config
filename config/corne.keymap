@@ -7,6 +7,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/rgb.h>
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1200
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 20
 #include <dt-bindings/zmk/pointing.h>
@@ -31,6 +32,34 @@
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&mo 1>, <&tog 4>;
+        };
+
+        rgb_mouse_layer: behavior_layer_state {
+            compatible = "zmk,behavior-layer-state";
+            #binding-cells = <1>;
+            bindings = <&rgb_ug RGB_SLD 0xff 0x00 0x00>,
+                       <&rgb_ug RGB_OFF>;
+        };
+
+        rgb_num_layer: behavior_layer_state {
+            compatible = "zmk,behavior-layer-state";
+            #binding-cells = <1>;
+            bindings = <&rgb_ug RGB_SLD 0x00 0x00 0xff>,
+                       <&rgb_ug RGB_OFF>;
+        };
+
+        rgb_lower_layer: behavior_layer_state {
+            compatible = "zmk,behavior-layer-state";
+            #binding-cells = <1>;
+            bindings = <&rgb_ug RGB_MODE_RAINBOW>,
+                       <&rgb_ug RGB_OFF>;
+        };
+
+        rgb_raise_layer: behavior_layer_state {
+            compatible = "zmk,behavior-layer-state";
+            #binding-cells = <1>;
+            bindings = <&rgb_ug RGB_MODE_RAINBOW>,
+                       <&rgb_ug RGB_OFF>;
         };
     };
 
@@ -112,4 +141,8 @@
             >;
         };
     };
+};
+
+&layer_state {
+    layer_state_handlers = <&rgb_lower_layer 1 &rgb_raise_layer 2 &rgb_mouse_layer 3 &rgb_num_layer 4>;
 };
