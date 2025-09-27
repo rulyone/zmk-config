@@ -92,12 +92,14 @@
             #binding-cells = <1>;
             bindings = <&rgb_on_blue>, <&rgb_ug RGB_OFF>;      // Num on/off
         };
-    };
 
-    /* Triggers behaviors when layers turn on/off */
-    layer_state: layer_state {
-        compatible = "zmk,layer-state";
-        bindings = <&rgb_lower_layer 1>;
+        layer_state: layer_state {
+            compatible = "zmk,layer-state";
+            bindings = <&rgb_lower_layer 1>,
+                       <&rgb_raise_layer 2>,
+                       <&rgb_mouse_layer 3>,
+                       <&rgb_num_layer   4>;
+        };
     };
 
     keymap {
