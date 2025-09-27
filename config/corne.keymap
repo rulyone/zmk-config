@@ -19,16 +19,34 @@
 / {
     
     behaviors {
+        /* Lower (MO 1) on hold; toggle Num (layer 4) on double tap */
+        lwr_num_layer: lwr_num_layer {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&mo 1>, <&tog 4>;
+        };
+
+        /* Raise (MO 2) on hold; toggle Mouse (layer 3) on double tap */
+        rse_mouse_layer: rse_mouse_layer {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&mo 2>, <&tog 3>;
+        };
+
         // Solid colors
         rgb_on_red: rgb_on_red {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <0>; wait-ms = <10>;
+            #binding-cells = <0>; 
+            wait-ms = <10>;
             bindings = <&rgb_ug RGB_ON>, <&rgb_ug RGB_COLOR_HSB(0,100,100)>;        // red
         };
 
         rgb_on_blue: rgb_on_blue {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <0>; wait-ms = <10>;
+            #binding-cells = <0>; 
+            wait-ms = <10>;
             bindings = <&rgb_ug RGB_ON>, <&rgb_ug RGB_COLOR_HSB(240,100,100)>;      // blue
         };
 
@@ -37,7 +55,8 @@
         // but see the persistence notes below if you keep this.
         rgb_on_rainbow: rgb_on_rainbow {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <0>; wait-ms = <10>;
+            #binding-cells = <0>; 
+            wait-ms = <10>;
             bindings = <&rgb_ug RGB_ON>, <&rgb_ug RGB_EFF>, <&rgb_ug RGB_EFF>;
         };
 
@@ -155,11 +174,4 @@
             >;
         };
     };
-};
-
-&layer_state {
-    bindings = <&rgb_lower_layer 1>,
-               <&rgb_raise_layer 2>,
-               <&rgb_mouse_layer 3>,
-               <&rgb_num_layer 4>;
 };
