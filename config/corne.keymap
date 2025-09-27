@@ -68,38 +68,6 @@
             bindings = <&rgb_ug RGB_ON>, <&rgb_ug RGB_EFF>, <&rgb_ug RGB_EFF>;
         };
 
-        // One behavior-layer-state per layer you want to indicate:
-        rgb_lower_layer: rgb_lower_layer {
-            compatible = "zmk,behavior-layer-state";
-            #binding-cells = <1>;
-            bindings = <&rgb_on_green>, <&rgb_ug RGB_OFF>;   // Lower on/off
-        };
-
-        rgb_raise_layer: rgb_raise_layer {
-            compatible = "zmk,behavior-layer-state";
-            #binding-cells = <1>;
-            bindings = <&rgb_on_rainbow>, <&rgb_ug RGB_OFF>;   // Raise on/off
-        };
-
-        rgb_mouse_layer: rgb_mouse_layer {
-            compatible = "zmk,behavior-layer-state";
-            #binding-cells = <1>;
-            bindings = <&rgb_on_red>, <&rgb_ug RGB_OFF>;       // Mouse on/off
-        };
-
-        rgb_num_layer: rgb_num_layer {
-            compatible = "zmk,behavior-layer-state";
-            #binding-cells = <1>;
-            bindings = <&rgb_on_blue>, <&rgb_ug RGB_OFF>;      // Num on/off
-        };
-
-        layer_state: layer_state {
-            compatible = "zmk,layer-state";
-            bindings = <&rgb_lower_layer 1>,
-                       <&rgb_raise_layer 2>,
-                       <&rgb_mouse_layer 3>,
-                       <&rgb_num_layer   4>;
-        };
     };
 
     keymap {
