@@ -17,6 +17,56 @@
 #define ES_MINUS  &kp FSLH  // Spanish layout maps KC_SLSH to "-/_"
 
 / {
+    
+    behaviors {
+        // Solid colors
+        rgb_on_red: rgb_on_red {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>; wait-ms = <10>;
+            bindings = <&rgb_ug RGB_ON>, <&rgb_ug RGB_COLOR_HSB(0,100,100)>;        // red
+        };
+
+        rgb_on_blue: rgb_on_blue {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>; wait-ms = <10>;
+            bindings = <&rgb_ug RGB_ON>, <&rgb_ug RGB_COLOR_HSB(240,100,100)>;      // blue
+        };
+
+        // Optional: “animated” look without relying on unknown start effect.
+        // From a clean baseline, 2 steps usually lands on Spectrum,
+        // but see the persistence notes below if you keep this.
+        rgb_on_rainbow: rgb_on_rainbow {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>; wait-ms = <10>;
+            bindings = <&rgb_ug RGB_ON>, <&rgb_ug RGB_EFF>, <&rgb_ug RGB_EFF>;
+        };
+
+        // One behavior-layer-state per layer you want to indicate:
+        rgb_lower_layer: rgb_lower_layer {
+            compatible = "zmk,behavior-layer-state";
+            #binding-cells = <1>;
+            bindings = <&rgb_on_rainbow>, <&rgb_ug RGB_OFF>;   // Lower on/off
+        };
+
+        rgb_raise_layer: rgb_raise_layer {
+            compatible = "zmk,behavior-layer-state";
+            #binding-cells = <1>;
+            bindings = <&rgb_on_rainbow>, <&rgb_ug RGB_OFF>;   // Raise on/off
+        };
+
+        rgb_mouse_layer: rgb_mouse_layer {
+            compatible = "zmk,behavior-layer-state";
+            #binding-cells = <1>;
+            bindings = <&rgb_on_red>, <&rgb_ug RGB_OFF>;       // Mouse on/off
+        };
+
+        rgb_num_layer: rgb_num_layer {
+            compatible = "zmk,behavior-layer-state";
+            #binding-cells = <1>;
+            bindings = <&rgb_on_blue>, <&rgb_ug RGB_OFF>;      // Num on/off
+        };
+    };
+
     /* Triggers behaviors when layers turn on/off */
     layer_state: layer_state {
         compatible = "zmk,layer-state";
@@ -25,79 +75,6 @@
                    <&rgb_raise_layer 2>,
                    <&rgb_mouse_layer 3>,
                    <&rgb_num_layer   4>;
-    };
-
-    behaviors {
-        // Double tap toggles the mouse layer; hold mirrors the original Raise key behavior.
-        rse_mouse_layer: tap_dance_rse {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&mo 2>, <&tog 3>;
-        };
-
-        // Double tap toggles the numpad layer; hold mirrors the original Lower key behavior.
-        lwr_num_layer: tap_dance_lwr {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&mo 1>, <&tog 4>;
-        };
-
-        rgb_on_red: behavior_macro_rgb_on_red {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <10>;
-            bindings = <&rgb_ug RGB_ON>,
-                       <&rgb_ug RGB_COLOR_HSB(0,100,100)>;
-        };
-
-        rgb_on_blue: behavior_macro_rgb_on_blue {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <10>;
-            bindings = <&rgb_ug RGB_ON>,
-                       <&rgb_ug RGB_COLOR_HSB(240,100,100)>;
-        };
-
-        rgb_mouse_layer: rgb_mouse_layer {
-            compatible = "zmk,behavior-layer-state";
-            #binding-cells = <1>;
-            bindings = <&rgb_on_red>,
-                       <&rgb_ug RGB_OFF>;
-        };
-
-        rgb_num_layer: rgb_num_layer {
-            compatible = "zmk,behavior-layer-state";
-            #binding-cells = <1>;
-            bindings = <&rgb_on_blue>,
-                       <&rgb_ug RGB_OFF>;
-        };
-
-        
-        rgb_on_rainbow: rgb_on_rainbow {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <10>;
-            // Try to select the 'Spectrum' effect by cycling twice from Solid
-            bindings = <&rgb_ug RGB_ON>,
-                       <&rgb_ug RGB_EFF>,
-                       <&rgb_ug RGB_EFF>;
-        };
-
-        rgb_lower_layer: rgb_lower_layer {
-            compatible = "zmk,behavior-layer-state";
-            #binding-cells = <1>;
-            bindings = <&rgb_on_rainbow>,
-                       <&rgb_ug RGB_OFF>;
-        };
-
-        rgb_raise_layer: rgb_raise_layer {
-            compatible = "zmk,behavior-layer-state";
-            #binding-cells = <1>;
-            bindings = <&rgb_on_rainbow>,
-                       <&rgb_ug RGB_OFF>;
-        };
     };
 
     keymap {
