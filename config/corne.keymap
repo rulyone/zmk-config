@@ -50,14 +50,14 @@
                        <&rgb_ug RGB_COLOR_HSB(240,100,100)>;
         };
 
-        rgb_mouse_layer: behavior_layer_state {
+        rgb_mouse_layer: rgb_mouse_layer {
             compatible = "zmk,behavior-layer-state";
             #binding-cells = <1>;
             bindings = <&rgb_on_red>,
                        <&rgb_ug RGB_OFF>;
         };
 
-        rgb_num_layer: behavior_layer_state {
+        rgb_num_layer: rgb_num_layer {
             compatible = "zmk,behavior-layer-state";
             #binding-cells = <1>;
             bindings = <&rgb_on_blue>,
@@ -65,7 +65,7 @@
         };
 
         
-        rgb_on_rainbow: behavior_macro_rgb_on_rainbow {
+        rgb_on_rainbow: rgb_on_rainbow {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <10>;
@@ -75,14 +75,14 @@
                        <&rgb_ug RGB_EFF>;
         };
 
-        rgb_lower_layer: behavior_layer_state {
+        rgb_lower_layer: rgb_lower_layer {
             compatible = "zmk,behavior-layer-state";
             #binding-cells = <1>;
             bindings = <&rgb_on_rainbow>,
                        <&rgb_ug RGB_OFF>;
         };
 
-        rgb_raise_layer: behavior_layer_state {
+        rgb_raise_layer: rgb_raise_layer {
             compatible = "zmk,behavior-layer-state";
             #binding-cells = <1>;
             bindings = <&rgb_on_rainbow>,
