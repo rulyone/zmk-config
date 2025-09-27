@@ -19,7 +19,7 @@
 / {
     behaviors {
         // Double tap toggles the mouse layer; hold mirrors the original Raise key behavior.
-        rse_mouse_layer: tap_dance_rse {
+        rse_mouse_layer: tap_dance_rse_behavior {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
@@ -27,14 +27,14 @@
         };
 
         // Double tap toggles the numpad layer; hold mirrors the original Lower key behavior.
-        lwr_num_layer: tap_dance_lwr {
+        lwr_num_layer: tap_dance_lwr_behavior {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&mo 1>, <&tog 4>;
         };
 
-        rgb_on_red: behavior_macro_rgb_on_red {
+        rgb_on_red: rgb_on_red_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <10>;
@@ -42,7 +42,7 @@
                        <&rgb_ug RGB_COLOR_HSB(0, 100, 100)>;
         };
 
-        rgb_on_blue: behavior_macro_rgb_on_blue {
+        rgb_on_blue: rgb_on_blue_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <10>;
@@ -50,28 +50,28 @@
                        <&rgb_ug RGB_COLOR_HSB(240, 100, 100)>;
         };
 
-        rgb_mouse_layer: behavior_layer_state {
+        rgb_mouse_layer: rgb_mouse_layer_state {
             compatible = "zmk,behavior-layer-state";
             #binding-cells = <1>;
             bindings = <&rgb_on_red>,
                        <&rgb_ug RGB_OFF>;
         };
 
-        rgb_num_layer: behavior_layer_state {
+        rgb_num_layer: rgb_num_layer_state {
             compatible = "zmk,behavior-layer-state";
             #binding-cells = <1>;
             bindings = <&rgb_on_blue>,
                        <&rgb_ug RGB_OFF>;
         };
 
-        rgb_lower_layer: behavior_layer_state {
+        rgb_lower_layer: rgb_lower_layer_state {
             compatible = "zmk,behavior-layer-state";
             #binding-cells = <1>;
             bindings = <&rgb_ug RGB_MODE_RAINBOW>,
                        <&rgb_ug RGB_OFF>;
         };
 
-        rgb_raise_layer: behavior_layer_state {
+        rgb_raise_layer: rgb_raise_layer_state {
             compatible = "zmk,behavior-layer-state";
             #binding-cells = <1>;
             bindings = <&rgb_ug RGB_MODE_RAINBOW>,
