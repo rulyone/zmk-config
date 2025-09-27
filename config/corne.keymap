@@ -17,6 +17,16 @@
 #define ES_MINUS  &kp FSLH  // Spanish layout maps KC_SLSH to "-/_"
 
 / {
+    /* Triggers behaviors when layers turn on/off */
+    layer_state: layer_state {
+        compatible = "zmk,layer-state";
+        // Each entry = a behavior label + the layer index it should watch.
+        bindings = <&rgb_lower_layer 1>,
+                   <&rgb_raise_layer 2>,
+                   <&rgb_mouse_layer 3>,
+                   <&rgb_num_layer   4>;
+    };
+    
     behaviors {
         // Double tap toggles the mouse layer; hold mirrors the original Raise key behavior.
         rse_mouse_layer: tap_dance_rse {
