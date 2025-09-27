@@ -18,7 +18,7 @@
 / {
     behaviors {
         // Double tap toggles the mouse layer; hold mirrors the original Raise key behavior.
-        rse_mouse_layer: behavior_tap_dance {
+        rse_mouse_layer: tap_dance_rse {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
@@ -26,7 +26,7 @@
         };
 
         // Double tap toggles the numpad layer; hold mirrors the original Lower key behavior.
-        lwr_num_layer: behavior_tap_dance {
+        lwr_num_layer: tap_dance_lwr {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
