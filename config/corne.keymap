@@ -50,6 +50,14 @@
             bindings = <&rgb_ug RGB_ON>, <&rgb_ug RGB_COLOR_HSB(240,100,100)>;      // blue
         };
 
+        rgb_on_green: rgb_on_green {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            bindings = <&rgb_ug RGB_ON>,
+                        <&rgb_ug RGB_COLOR_HSB(120,100,100)>; // green
+        };
+
         // Optional: “animated” look without relying on unknown start effect.
         // From a clean baseline, 2 steps usually lands on Spectrum,
         // but see the persistence notes below if you keep this.
@@ -64,7 +72,7 @@
         rgb_lower_layer: rgb_lower_layer {
             compatible = "zmk,behavior-layer-state";
             #binding-cells = <1>;
-            bindings = <&rgb_on_rainbow>, <&rgb_ug RGB_OFF>;   // Lower on/off
+            bindings = <&rgb_on_green>, <&rgb_ug RGB_OFF>;   // Lower on/off
         };
 
         rgb_raise_layer: rgb_raise_layer {
@@ -89,11 +97,7 @@
     /* Triggers behaviors when layers turn on/off */
     layer_state: layer_state {
         compatible = "zmk,layer-state";
-        // Each entry = a behavior label + the layer index it should watch.
-        bindings = <&rgb_lower_layer 1>,
-                   <&rgb_raise_layer 2>,
-                   <&rgb_mouse_layer 3>,
-                   <&rgb_num_layer   4>;
+        bindings = <&rgb_lower_layer 1>;
     };
 
     keymap {
