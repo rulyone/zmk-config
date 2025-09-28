@@ -6,6 +6,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+LOG_MODULE_REGISTER(layer_ug, CONFIG_ZMK_LOG_LEVEL);
+
 #include <zmk/event_manager.h>
 #include <zmk/events/layer_state_changed.h>
 #include <zmk/keymap.h>
@@ -44,8 +46,6 @@ static int rgb_ug_invoke_param(uint32_t p1) {
 
 
 static int layer_ug_listener(const zmk_event_t *eh);
-
-LOG_MODULE_REGISTER(layer_ug, CONFIG_ZMK_LOG_LEVEL);
 
 ZMK_LISTENER(layer_ug, layer_ug_listener);
 ZMK_SUBSCRIPTION(layer_ug, zmk_layer_state_changed);
