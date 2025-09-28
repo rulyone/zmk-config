@@ -2,4 +2,4 @@ name: zmk_user_config
 build:
   cmake: .
   settings:
-    shield_root: ../config/boards
+    board_root: ..
