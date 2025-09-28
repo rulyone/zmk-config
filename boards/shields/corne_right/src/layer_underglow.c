@@ -78,4 +78,4 @@ static int layer_ug_listener(const zmk_event_t *eh) {
     return ZMK_EV_EVENT_BUBBLE;
 }
 
-#endif /* central-only *
+#endif /* central-only */
