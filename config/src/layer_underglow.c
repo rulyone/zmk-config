@@ -1,5 +1,6 @@
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
+#include <zephyr/sys/util.h>
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -7,6 +8,7 @@
 #include <zmk/event_manager.h>
 #include <zmk/events/layer_state_changed.h>
 #include <zmk/keymap.h>
+#include <zmk/rgb.h>
 #include <zmk/rgb_underglow.h>
 
 static int layer_ug_listener(const zmk_event_t *eh);
@@ -17,25 +19,22 @@ ZMK_LISTENER(layer_ug, layer_ug_listener);
 ZMK_SUBSCRIPTION(layer_ug, zmk_layer_state_changed);
 
 // Map each layer to an underglow color.
+static const struct zmk_rgb_hsb layer_colors[] = {
+    [0] = { .h = 0, .s = 0, .b = 15 },    // Base layer
+    [1] = { .h = 120, .s = 100, .b = 100 }, // Lower layer
+    [2] = { .h = 45, .s = 100, .b = 100 },  // Raise layer
+    [3] = { .h = 0, .s = 100, .b = 100 },   // Mouse layer
+    [4] = { .h = 240, .s = 100, .b = 100 }, // Num layer
+};
+
 static void set_color_for_layer(uint8_t layer) {
-    switch (layer) {
-    case 3: // Mouse layer
-        zmk_rgb_underglow_set_hsb(0, 100, 100); // red
-        break;
-    case 4: // Num layer
-        zmk_rgb_underglow_set_hsb(240, 100, 100); // blue
-        break;
-    case 1: // Lower layer
-        zmk_rgb_underglow_set_hsb(120, 100, 100); // green
-        break;
-    case 2: // Raise layer
-        zmk_rgb_underglow_set_hsb(45, 100, 100); // yellow
-        break;
-    case 0: // Default/base layer
-    default:
-        zmk_rgb_underglow_set_hsb(0, 0, 15); // dim white baseline
-        break;
+    const struct zmk_rgb_hsb *color = &layer_colors[0];
+
+    if (layer < ARRAY_SIZE(layer_colors)) {
+        color = &layer_colors[layer];
     }
+
+    (void)zmk_rgb_underglow_set_hsb(color);
 }
 
 static int8_t prev_top = -1;
