@@ -11,6 +11,8 @@
     IS_ENABLED(CONFIG_ZMK_RGB_UNDERGLOW) && \
     DT_NODE_EXISTS(DT_CHOSEN(zmk_underglow))
 
+#error "Layer underglow guard active"
+
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 
