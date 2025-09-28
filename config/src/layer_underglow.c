@@ -1,4 +1,4 @@
-#include <zephyr/devicetree.h>
+#include <zephyr/autoconf.h>
 #include <zephyr/sys/util.h>
 
 /* Build this file only when all required subsystems/devices exist.
@@ -6,9 +6,7 @@
  * - right half without underglow       -> file becomes empty
  * - left half with underglow           -> functionality enabled
  */
-#if IS_ENABLED(CONFIG_ZMK_KEYMAP) && \
-    IS_ENABLED(CONFIG_ZMK_LAYER) && \
-    IS_ENABLED(CONFIG_ZMK_RGB_UNDERGLOW)
+#if defined(CONFIG_ZMK_RGB_UNDERGLOW)
 
 #error "Layer underglow guard active"
 
