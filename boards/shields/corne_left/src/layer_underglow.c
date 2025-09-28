@@ -43,7 +43,7 @@ static int rgb_ug_invoke_param(uint32_t p1) {
         .timestamp = k_uptime_get(),
     };
 
-    return zmk_behavior_invoke_binding(&binding, ev);
+    return zmk_behavior_invoke_binding(&binding, ev, true);
 }
 
 
