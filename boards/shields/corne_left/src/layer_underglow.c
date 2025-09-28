@@ -23,7 +23,7 @@ LOG_MODULE_REGISTER(layer_ug, CONFIG_ZMK_LOG_LEVEL);
 #define RGB_UG_NODE DT_NODELABEL(rgb_ug)
 #define RGB_UG_DEV_NAME DEVICE_DT_NAME(RGB_UG_NODE)
 
-static int rgb_ug_invoke_param(uint32_t p1) {
+static int rgb_ug_invoke_cmd(uint32_t cmd, uint32_t param) {
     /* Ensure the behavior device exists/ready (optional but nice) */
     if (!device_is_ready(DEVICE_DT_GET(RGB_UG_NODE))) {
         LOG_WRN("rgb_ug device not ready");
@@ -33,7 +33,7 @@ static int rgb_ug_invoke_param(uint32_t p1) {
     /* behavior_dev is the device NAME (const char*) */
     const struct zmk_behavior_binding binding = {
         .behavior_dev = RGB_UG_DEV_NAME,
-        .param1 = p1,
+        .param1 = cmd,
         .param2 = 0,
     };
 
@@ -71,10 +71,10 @@ static void set_color_for_layer(uint8_t layer) {
     }
 
     // Ensure LEDs are on (do this via behavior so both halves turn on)
-    (void)rgb_ug_invoke_param(RGB_ON);
+    (void)rgb_ug_invoke_cmd(RGB_ON_CMD, 0);
 
     // Set HSB via behavior => split-synced
-    (void)rgb_ug_invoke_param(pack_hsb(h, s, b));
+    (void)rgb_ug_invoke_cmd(RGB_COLOR_HSB_CMD, pack_hsb(h, s, b));
 }
 
 // // Map each layer to an underglow color.
