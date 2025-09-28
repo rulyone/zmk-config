@@ -20,20 +20,20 @@ ZMK_SUBSCRIPTION(layer_ug, zmk_layer_state_changed);
 static void set_color_for_layer(uint8_t layer) {
     switch (layer) {
     case 3: // Mouse layer
-        zmk_rgb_underglow_set_hsb(&(struct zmk_rgb_hsb){ .h = 0, .s = 100, .b = 100 });
+        zmk_rgb_underglow_set_hsb(&(struct zmk_rgb_hsb){ .hue = 0, .saturation = 100, .brightness = 100 });
         break;
     case 4: // Num layer
-        zmk_rgb_underglow_set_hsb(&(struct zmk_rgb_hsb){ .h = 240, .s = 100, .b = 100 });
+        zmk_rgb_underglow_set_hsb(&(struct zmk_rgb_hsb){ .hue = 240, .saturation = 100, .brightness = 100 });
         break;
     case 1: // Lower layer
-        zmk_rgb_underglow_set_hsb(&(struct zmk_rgb_hsb){ .h = 120, .s = 100, .b = 100 });
+        zmk_rgb_underglow_set_hsb(&(struct zmk_rgb_hsb){ .hue = 120, .saturation = 100, .brightness = 100 });
         break;
     case 2: // Raise layer
-        zmk_rgb_underglow_set_hsb(&(struct zmk_rgb_hsb){ .h = 45, .s = 100, .b = 100 });
+        zmk_rgb_underglow_set_hsb(&(struct zmk_rgb_hsb){ .hue = 45, .saturation = 100, .brightness = 100 });
         break;
     case 0: // Default/base layer
     default:
-        zmk_rgb_underglow_set_hsb(&(struct zmk_rgb_hsb){ .h = 0, .s = 0, .b = 15 });
+        zmk_rgb_underglow_set_hsb(&(struct zmk_rgb_hsb){ .hue = 0, .saturation = 0, .brightness = 15 });
         break;
     }
 }
