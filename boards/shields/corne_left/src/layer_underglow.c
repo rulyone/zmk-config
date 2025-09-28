@@ -19,30 +19,33 @@ LOG_MODULE_REGISTER(layer_ug, CONFIG_ZMK_LOG_LEVEL);
 #include <dt-bindings/zmk/rgb.h>  // for RGB_ON, RGB_COLOR_HSB(), etc.
 
 // Node label provided by ZMK’s behaviors; same thing you write as &rgb_ug in keymaps.
+/* Devicetree node and device name for &rgb_ug behavior */
 #define RGB_UG_NODE DT_NODELABEL(rgb_ug)
+#define RGB_UG_DEV_NAME DEVICE_DT_NAME(RGB_UG_NODE)
 
 static int rgb_ug_invoke_param(uint32_t p1) {
-    const struct device *dev = DEVICE_DT_GET(RGB_UG_NODE);
-    if (!device_is_ready(dev)) {
+    /* Ensure the behavior device exists/ready (optional but nice) */
+    if (!device_is_ready(DEVICE_DT_GET(RGB_UG_NODE))) {
         LOG_WRN("rgb_ug device not ready");
         return -ENODEV;
     }
 
+    /* behavior_dev is the device NAME (const char*) */
     const struct zmk_behavior_binding binding = {
-        .behavior_dev = dev,
+        .behavior_dev = RGB_UG_DEV_NAME,
         .param1 = p1,
         .param2 = 0,
     };
 
-    // “Pressed” event; position is not used by this behavior.
+    /* Binding event: position is unused by rgb_ug; no .state field here */
     const struct zmk_behavior_binding_event ev = {
         .position = 0,
         .timestamp = k_uptime_get(),
-        .state = true,
     };
 
     return zmk_behavior_invoke_binding(&binding, ev);
 }
+
 
 
 static int layer_ug_listener(const zmk_event_t *eh);
