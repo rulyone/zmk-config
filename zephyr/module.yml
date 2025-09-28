@@ -1,5 +1,5 @@
 name: zmk_user_config
 build:
-  cmake: .
+  cmake: zephyr
   settings:
-    board_root: ..
+    board_root: .
