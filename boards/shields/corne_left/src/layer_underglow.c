@@ -1,12 +1,4 @@
-#include <zephyr/autoconf.h>
 #include <zephyr/sys/util.h>
-
-/* Build this file only when all required subsystems/devices exist.
- * - settings_reset (no keymap/layers)  -> file becomes empty
- * - right half without underglow       -> file becomes empty
- * - left half with underglow           -> functionality enabled
- */
-#if defined(CONFIG_ZMK_RGB_UNDERGLOW)
 
 #error "Layer underglow guard active"
 
@@ -79,5 +71,3 @@ static int layer_ug_listener(const zmk_event_t *eh) {
 
     return ZMK_EV_EVENT_BUBBLE;
 }
-
-#endif /* CONFIG_ZMK_KEYMAP && CONFIG_ZMK_LAYER && CONFIG_ZMK_RGB_UNDERGLOW && chosen(zmk,underglow) */
