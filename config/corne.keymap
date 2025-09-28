@@ -141,10 +141,10 @@
 
         num_layer {
             bindings = <
-&kp TAB    &trans  &trans  &trans  &trans  &trans    &kp KP_SLASH   &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp PRCNT      &kp BSPC
-&kp LSHFT  &trans  &trans  &trans  &trans  &trans    &kp KP_MINUS   &kp KP_N4   &kp KP_N5   &kp KP_N6   &kp KP_ASTERISK &kp KP_EQUAL
-&kp LCTRL  &trans  &trans  &trans  &trans  &trans    &kp KP_N0      &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_PLUS    &kp ESC
-                                &kp LGUI  &trans  &kp SPACE    &kp KP_ENTER   &kp KP_DOT   &kp RALT
+&kp TAB    &bt BT_CLR   &bt BT_SEL 0    &bt BT_SEL 1    &trans  &trans      &kp KP_SLASH   &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp PRCNT      &kp BSPC
+&kp LSHFT  &trans       &trans          &trans          &trans  &trans      &kp KP_MINUS   &kp KP_N4   &kp KP_N5   &kp KP_N6   &kp KP_ASTERISK &kp KP_EQUAL
+&kp LCTRL  &trans       &trans          &trans          &trans  &trans      &kp KP_N0      &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_PLUS    &kp ESC
+                                        &kp LGUI        &trans  &kp SPACE   &kp KP_ENTER   &kp KP_DOT  &kp RALT
             >;
         };
     };
