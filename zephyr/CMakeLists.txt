@@ -1,11 +1,14 @@
-# This CMake runs because module.yml points here.
-# ZEPHYR_CURRENT_MODULE_DIR is the absolute path to the directory containing module.yml (i.e., your repo's ./zephyr/.. root).
-
 zephyr_library()
 
-# Only for corne_left builds:
+# Debug what the build sees (will print in CMake configure logs)
+message(STATUS "zmk_user_config: CONFIG_SHIELD_CORNE_LEFT=${CONFIG_SHIELD_CORNE_LEFT}")
+message(STATUS "zmk_user_config: CONFIG_ZMK_RGB_UNDERGLOW=${CONFIG_ZMK_RGB_UNDERGLOW}")
+
+# Module dir is <repo>/zephyr; go up to repo root:
+get_filename_component(REPO_ROOT "${ZEPHYR_CURRENT_MODULE_DIR}" DIRECTORY)
+
 if(CONFIG_SHIELD_CORNE_LEFT)
   zephyr_library_sources(
-    ${ZEPHYR_CURRENT_MODULE_DIR}/config/boards/shields/corne_left/src/layer_underglow.c
+    ${REPO_ROOT}/config/boards/shields/corne_left/src/layer_underglow.c
   )
 endif()
