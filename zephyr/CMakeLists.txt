@@ -1,19 +1,26 @@
 # Runs because module.yml points to this directory.
 zephyr_library()
 
-# Make ZMK public headers visible to this module's sources
-# PROJECT_SOURCE_DIR == <zmk repo>/zmk/app when building zmk/app as the sample
-zephyr_library_include_directories(
-  ${PROJECT_SOURCE_DIR}/include
-  ${PROJECT_SOURCE_DIR}/module/include
+# ----- Add ZMK app headers to this module's include path -----
+# CMAKE_SOURCE_DIR resolves to <workspace>/zmk/app for this build.
+set(ZMK_APP_INCLUDE         "${CMAKE_SOURCE_DIR}/include")
+set(ZMK_APP_MODULE_INCLUDE  "${CMAKE_SOURCE_DIR}/module/include")
+
+# Helpful diagnostics in the CMake log
+if(EXISTS "${ZMK_APP_INCLUDE}/zmk/event_manager.h")
+  message(STATUS "zmk_user_config: Found event_manager.h in ${ZMK_APP_INCLUDE}")
+else()
+  message(WARNING "zmk_user_config: event_manager.h NOT found under ${ZMK_APP_INCLUDE}")
+  message(WARNING "zmk_user_config: CMAKE_SOURCE_DIR=${CMAKE_SOURCE_DIR}")
+endif()
+
+# Attach the include dirs to THIS library (created by zephyr_library())
+# so your sources (e.g., layer_underglow.c) can include ZMK headers.
+target_include_directories(${ZEPHYR_CURRENT_LIBRARY} PRIVATE
+  ${ZMK_APP_INCLUDE}
+  ${ZMK_APP_MODULE_INCLUDE}
 )
-
-# Debug so we can see it in CI logs:
-message(STATUS "zmk_user_config: CMake is running")
-message(STATUS "zmk_user_config: SHIELD=${SHIELD}")
-message(STATUS "zmk_user_config: SHIELD_AS_LIST=${SHIELD_AS_LIST}")
-message(STATUS "zmk_user_config: ZEPHYR_CURRENT_MODULE_DIR=${ZEPHYR_CURRENT_MODULE_DIR}")
-
+# -------------------------------------------------------------
 # The module dir **is** the repo root (because module.yml lives in zephyr/)
 set(LAYER_FILE "${ZEPHYR_CURRENT_MODULE_DIR}/boards/shields/corne_left/src/layer_underglow.c")
 if(EXISTS "${LAYER_FILE}")
