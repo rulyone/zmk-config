@@ -1,7 +1,5 @@
 #include <zephyr/sys/util.h>
 
-#error "Layer underglow guard active"
-
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 
