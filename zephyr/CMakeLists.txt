@@ -1,6 +1,13 @@
 # Runs because module.yml points to this directory.
 zephyr_library()
 
+# Make ZMK public headers visible to this module's sources
+# PROJECT_SOURCE_DIR == <zmk repo>/zmk/app when building zmk/app as the sample
+zephyr_library_include_directories(
+  ${PROJECT_SOURCE_DIR}/include
+  ${PROJECT_SOURCE_DIR}/module/include
+)
+
 # Debug so we can see it in CI logs:
 message(STATUS "zmk_user_config: CMake is running")
 message(STATUS "zmk_user_config: SHIELD=${SHIELD}")
