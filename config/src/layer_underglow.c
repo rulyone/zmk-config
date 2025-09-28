@@ -9,8 +9,6 @@
 #include <zmk/keymap.h>
 #include <zmk/rgb_underglow.h>
 
-#error "Layer underglow build test"
-
 LOG_MODULE_REGISTER(layer_ug, CONFIG_ZMK_LOG_LEVEL);
 
 ZMK_LISTENER(layer_ug, layer_ug_listener);
