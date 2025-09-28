@@ -1,3 +1,16 @@
+#include <zephyr/devicetree.h>
+#include <zephyr/sys/util.h>
+
+/* Build this file only when all required subsystems/devices exist.
+ * - settings_reset (no keymap/layers)  -> file becomes empty
+ * - right half without underglow       -> file becomes empty
+ * - left half with underglow           -> functionality enabled
+ */
+#if IS_ENABLED(CONFIG_ZMK_KEYMAP) && \
+    IS_ENABLED(CONFIG_ZMK_LAYER) && \
+    IS_ENABLED(CONFIG_ZMK_RGB_UNDERGLOW) && \
+    DT_NODE_EXISTS(DT_CHOSEN(zmk_underglow))
+
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 
@@ -42,17 +55,15 @@ static void set_color_for_layer(uint8_t layer) {
     (void)zmk_rgb_underglow_set_hsb(color);
 }
 
-static int8_t prev_top = -1;
+/* Use an unsigned type (matches API) and an impossible sentinel (0xFF). */
+static uint8_t prev_top = 0xFF;
 
 static int layer_ug_listener(const zmk_event_t *eh) {
     if (!as_zmk_layer_state_changed(eh)) {
         return ZMK_EV_EVENT_BUBBLE;
     }
 
-    int8_t top = zmk_keymap_highest_layer_active();
-    if (top < 0) {
-        return ZMK_EV_EVENT_BUBBLE;
-    }
+    uint8_t top = zmk_keymap_highest_layer_active();
 
     if (top == prev_top) {
         return ZMK_EV_EVENT_BUBBLE;
@@ -64,8 +75,10 @@ static int layer_ug_listener(const zmk_event_t *eh) {
         (void)zmk_rgb_underglow_on();
     }
 
-    set_color_for_layer((uint8_t)top);
-    LOG_INF("Layer changed -> top=%d", top);
+    set_color_for_layer(top);
+    LOG_INF("Layer changed -> top=%u", top);
 
     return ZMK_EV_EVENT_BUBBLE;
 }
+
+#endif /* CONFIG_ZMK_KEYMAP && CONFIG_ZMK_LAYER && CONFIG_ZMK_RGB_UNDERGLOW && chosen(zmk,underglow) */
