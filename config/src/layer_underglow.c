@@ -7,7 +7,6 @@
 #include <zmk/event_manager.h>
 #include <zmk/events/layer_state_changed.h>
 #include <zmk/keymap.h>
-#include <dt-bindings/zmk/rgb.h>
 #include <zmk/rgb_underglow.h>
 
 static int layer_ug_listener(const zmk_event_t *eh);
@@ -21,20 +20,20 @@ ZMK_SUBSCRIPTION(layer_ug, zmk_layer_state_changed);
 static void set_color_for_layer(uint8_t layer) {
     switch (layer) {
     case 3: // Mouse layer
-        zmk_rgb_underglow_set_hsb(RGB_COLOR_HSB(0, 100, 100));
+        zmk_rgb_underglow_set_hsb(&(struct zmk_rgb_hsb){ .h = 0, .s = 100, .b = 100 });
         break;
     case 4: // Num layer
-        zmk_rgb_underglow_set_hsb(RGB_COLOR_HSB(240, 100, 100));
+        zmk_rgb_underglow_set_hsb(&(struct zmk_rgb_hsb){ .h = 240, .s = 100, .b = 100 });
         break;
     case 1: // Lower layer
-        zmk_rgb_underglow_set_hsb(RGB_COLOR_HSB(120, 100, 100));
+        zmk_rgb_underglow_set_hsb(&(struct zmk_rgb_hsb){ .h = 120, .s = 100, .b = 100 });
         break;
     case 2: // Raise layer
-        zmk_rgb_underglow_set_hsb(RGB_COLOR_HSB(45, 100, 100));
+        zmk_rgb_underglow_set_hsb(&(struct zmk_rgb_hsb){ .h = 45, .s = 100, .b = 100 });
         break;
     case 0: // Default/base layer
     default:
-        zmk_rgb_underglow_set_hsb(RGB_COLOR_HSB(0, 0, 15));
+        zmk_rgb_underglow_set_hsb(&(struct zmk_rgb_hsb){ .h = 0, .s = 0, .b = 15 });
         break;
     }
 }
