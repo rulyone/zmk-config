@@ -8,8 +8,7 @@
  */
 #if IS_ENABLED(CONFIG_ZMK_KEYMAP) && \
     IS_ENABLED(CONFIG_ZMK_LAYER) && \
-    IS_ENABLED(CONFIG_ZMK_RGB_UNDERGLOW) && \
-    DT_NODE_EXISTS(DT_CHOSEN(zmk_underglow))
+    IS_ENABLED(CONFIG_ZMK_RGB_UNDERGLOW)
 
 #error "Layer underglow guard active"
 
