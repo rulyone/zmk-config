@@ -7,10 +7,8 @@ message(STATUS "zmk_user_config: SHIELD=${SHIELD}")
 message(STATUS "zmk_user_config: SHIELD_AS_LIST=${SHIELD_AS_LIST}")
 message(STATUS "zmk_user_config: ZEPHYR_CURRENT_MODULE_DIR=${ZEPHYR_CURRENT_MODULE_DIR}")
 
-# Compute repo root from .../zephyr -> ..
-get_filename_component(REPO_ROOT "${ZEPHYR_CURRENT_MODULE_DIR}" DIRECTORY)
-
-set(LAYER_FILE "${REPO_ROOT}/boards/shields/corne_left/src/layer_underglow.c")
+# The module dir **is** the repo root (because module.yml lives in zephyr/)
+set(LAYER_FILE "${ZEPHYR_CURRENT_MODULE_DIR}/boards/shields/corne_left/src/layer_underglow.c")
 if(EXISTS "${LAYER_FILE}")
   message(STATUS "zmk_user_config: found ${LAYER_FILE}")
 else()
