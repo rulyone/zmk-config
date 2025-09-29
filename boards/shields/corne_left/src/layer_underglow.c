@@ -67,12 +67,12 @@ static void set_color_for_layer(uint8_t layer)
     {
     case 3: // Mouse layer -> Swirl
         (void)rgb_ug_invoke_cmd(RGB_ON_CMD, 0);
-        (void)rgb_ug_invoke_cmd(RGB_EFF_CMD, 3); //3 Swirl
+        (void)rgb_ug_invoke_cmd(RGB_EFF_CMD, 2); //2 Spectrum effect
         return;
 
     case 4: // Num layer -> Swirl
         (void)rgb_ug_invoke_cmd(RGB_ON_CMD, 0);
-        (void)rgb_ug_invoke_cmd(RGB_EFF_CMD, 3); //3 Swirl
+        (void)rgb_ug_invoke_cmd(RGB_EFF_CMD, 2); //2 Spectrum effect
         return;
 
     case 1: // Lower -> solid green
