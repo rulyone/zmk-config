@@ -60,6 +60,7 @@ static inline uint32_t pack_hsb(uint16_t h, uint8_t s, uint8_t b)
     return ((uint32_t)h << 16) | ((uint32_t)s << 8) | (uint32_t)b;
 }
 
+// effect codes, see https://zmk.dev/docs/config/lighting
 #define EFF_STATIC      0     // static/solid
 #define EFF_BREATHE     1     // breathe
 #define EFF_SPECTRUM    2     // spectrum
@@ -70,7 +71,7 @@ static void set_color_for_layer(uint8_t layer) {
     switch (layer) {
     case 3: /* Mouse -> Swirl */
         (void)rgb_ug_invoke_cmd(RGB_ON_CMD, 0);
-        (void)rgb_ug_invoke_cmd(RGB_EFS_CMD, EFF_SWIRL);
+        (void)rgb_ug_invoke_cmd(RGB_EFS_CMD, EFF_SPECTRUM);
         return;
 
     case 4: /* Num -> Swirl */

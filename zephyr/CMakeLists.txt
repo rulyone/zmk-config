@@ -1,4 +1,3 @@
-# Runs because module.yml points to this directory.
 zephyr_library()
 
 # ----- Add ZMK app headers to this module's include path -----
@@ -15,13 +14,12 @@ else()
 endif()
 
 # Attach the include dirs to THIS library (created by zephyr_library())
-# so your sources (e.g., layer_underglow.c) can include ZMK headers.
+# so the sources (e.g., layer_underglow.c) can include ZMK headers.
 target_include_directories(${ZEPHYR_CURRENT_LIBRARY} PRIVATE
   ${ZMK_APP_INCLUDE}
   ${ZMK_APP_MODULE_INCLUDE}
 )
 # -------------------------------------------------------------
-# The module dir **is** the repo root (because module.yml lives in zephyr/)
 set(LAYER_FILE "${ZEPHYR_CURRENT_MODULE_DIR}/boards/shields/corne_left/src/layer_underglow.c")
 if(EXISTS "${LAYER_FILE}")
   message(STATUS "zmk_user_config: found ${LAYER_FILE}")
@@ -30,6 +28,7 @@ else()
 endif()
 
 # Gate on SHIELD early (works during configure time)
+# with this we only apply the layer_underglow.c only to corne_left
 if( (DEFINED SHIELD AND SHIELD STREQUAL "corne_left")
     OR ("corne_left" IN_LIST SHIELD_AS_LIST) )
   message(STATUS "zmk_user_config: corne_left detected; adding layer_underglow.c")
