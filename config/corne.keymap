@@ -197,7 +197,18 @@
 #define ES_LBKT (ES_LEFT_BRACKET)
 
 /* \ */
-#define ES_BACKSLASH (RA(ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_GRAVE_ACCENT_AND_TILDE)))
+//#define ES_BACKSLASH (RA(ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_GRAVE_ACCENT_AND_TILDE)))
+//#define ES_BSLH (ES_BACKSLASH)
+//#define ES_MORD KC_GRV  // º
+//#define KC_GRV 0x0035 // º
+//HID_USAGE_GD_RZ
+
+/* º */
+#define ES_MORD (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_GD_RZ))
+/* ª */
+#define ES_FORD (RS(ES_MORD))
+/* \ */
+#define ES_BACKSLASH (RA(ES_MORD))
 #define ES_BSLH (ES_BACKSLASH)
 
 /* ] */
@@ -304,7 +315,9 @@
 #define ES_RBRC (ES_RIGHT_BRACE)
 
 /* ~ */
-#define ES_TILDE (RA(ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_4_AND_DOLLAR)))
+//#define ES_TILDE (RA(ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_4_AND_DOLLAR)))
+/* ~ */
+#define ES_TILDE (RA(ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_SEMICOLON_AND_COLON)))
 
 /* ¡ */
 #define ES_INVERTED_EXCLAMATION (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_EQUAL_AND_PLUS))
@@ -441,13 +454,13 @@
             // -----------------------------------------------------------------------------------------
             // |      |  !  |  "  |  #  |  $  |  %  |   |  &  |  /  |  (  |  )  |  =  | BSPC |
             // | SHFT |  @  |  ¬  |  \  |  *  |  +  |   |  |  |  ^  |  [  |  ]  |  ~  |  '   |
-            // | CTRL |  <  |  >  |     |  ¡  |  -  |   |  ?  |  ¿  |  {  |  }  |  ;  |  ESC |
+            // | CTRL |  <  |  >  |  º  |  ¡  |  -  |   |  ?  |  ¿  |  {  |  }  |  ;  |  ESC |
             //                    | GUI |     | SPC |   | SHFT |     | ALT |
 
             bindings = <
 &trans     &kp ES_EXCL  &kp ES_DQT      &kp ES_HASH  &kp ES_DLLR   &kp ES_PRCNT   &kp ES_AMPS  &kp ES_FSLH     &kp ES_LPAR   &kp ES_RPAR  &kp ES_EQUAL  &kp BSPC
 &kp LSHFT  &kp ES_AT    &kp ES_NOT      &kp ES_BSLH  &kp ES_ASTRK  &kp ES_PLUS    &kp ES_PIPE  &kp ES_CARET    &kp ES_LBKT   &kp ES_RBKT  &kp ES_TILDE  &kp ES_SQT
-&kp LCTRL  &kp ES_LT    &kp ES_GT       &trans       &kp ES_IEXCL  &kp ES_MINUS   &kp ES_QMARK &kp ES_IQMARK   &kp ES_LBRC   &kp ES_RBRC  &kp ES_SEMI   &kp ESC
+&kp LCTRL  &kp ES_LT    &kp ES_GT       &kp ES_MORD       &kp ES_IEXCL  &kp ES_MINUS   &kp ES_QMARK &kp ES_IQMARK   &kp ES_LBRC   &kp ES_RBRC  &kp ES_SEMI   &kp ESC
                                         &kp LGUI     &trans        &kp SPACE      &kp RSHFT    &trans          &kp RALT
             >;
         };
