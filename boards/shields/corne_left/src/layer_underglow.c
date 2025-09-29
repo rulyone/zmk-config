@@ -60,32 +60,37 @@ static inline uint32_t pack_hsb(uint16_t h, uint8_t s, uint8_t b)
     return ((uint32_t)h << 16) | ((uint32_t)s << 8) | (uint32_t)b;
 }
 
+#define EFF_STATIC      0     // static/solid
+#define EFF_BREATHE     1     // breathe
+#define EFF_SPECTRUM    2     // spectrum
+#define EFF_SWIRL       3     // swirl
+
 /* Map each top layer to an underglow color and push via behavior. */
-static void set_color_for_layer(uint8_t layer)
-{
-    switch (layer)
-    {
-    case 3: // Mouse layer -> Swirl
+static void set_color_for_layer(uint8_t layer) {
+    switch (layer) {
+    case 3: /* Mouse -> Swirl */
         (void)rgb_ug_invoke_cmd(RGB_ON_CMD, 0);
-        (void)rgb_ug_invoke_cmd(RGB_EFF_CMD, 2); //2 Spectrum effect
+        (void)rgb_ug_invoke_cmd(RGB_EFS_CMD, EFF_SWIRL);
         return;
 
-    case 4: // Num layer -> Swirl
+    case 4: /* Num -> Swirl */
         (void)rgb_ug_invoke_cmd(RGB_ON_CMD, 0);
-        (void)rgb_ug_invoke_cmd(RGB_EFF_CMD, 2); //2 Spectrum effect
+        (void)rgb_ug_invoke_cmd(RGB_EFS_CMD, EFF_SWIRL);
         return;
 
-    case 1: // Lower -> solid green
+    case 1: /* Lower -> solid green */
         (void)rgb_ug_invoke_cmd(RGB_ON_CMD, 0);
+        (void)rgb_ug_invoke_cmd(RGB_EFS_CMD, EFF_STATIC);
         (void)rgb_ug_invoke_cmd(RGB_COLOR_HSB_CMD, pack_hsb(120, 100, 100));
         return;
 
-    case 2: // Raise -> solid yellow
+    case 2: /* Raise -> solid yellow */
         (void)rgb_ug_invoke_cmd(RGB_ON_CMD, 0);
+        (void)rgb_ug_invoke_cmd(RGB_EFS_CMD, EFF_STATIC);
         (void)rgb_ug_invoke_cmd(RGB_COLOR_HSB_CMD, pack_hsb(45, 100, 100));
         return;
 
-    case 0: // Default/base -> OFF
+    case 0: /* Base -> OFF */
     default:
         (void)rgb_ug_invoke_cmd(RGB_OFF_CMD, 0);
         return;
