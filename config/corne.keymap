@@ -5,6 +5,7 @@
  */
 
 #include <behaviors.dtsi>
+#include <key_overrides.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/rgb.h>
@@ -45,15 +46,21 @@
         es_alt_apost: es_alt_apost {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <10>;
             bindings = <&kp SQT>, <&kp SPACE>;
         };
 
-        es_alt_acute: es_alt_acute {
+        es_lalt_acute: es_lalt_acute {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            mods = <(MOD_LALT|MOD_RALT)>;
+            mods = <MOD_LALT>;
             bindings = <&es_shift_acute>, <&es_alt_apost>;
+        };
+
+        es_ralt_acute: es_ralt_acute {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            mods = <(MOD_RALT|MOD_RCTRL)>;
+            bindings = <&es_lalt_acute>, <&es_alt_apost>;
         };
 
         // Solid colors
@@ -105,7 +112,7 @@
 
             bindings = <
 &kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T        &kp Y    &kp U  &kp I      &kp O    &kp P     &kp BSPC
-&kp LSHFT  &kp A  &kp S  &kp D     &kp F  &kp G        &kp H    &kp J  &kp K      &kp L    ES_NTILDE  &es_alt_acute
+&kp LSHFT  &kp A  &kp S  &kp D     &kp F  &kp G        &kp H    &kp J  &kp K      &kp L    ES_NTILDE  &es_ralt_acute
 &kp LCTRL  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp N    &kp M  &kp COMMA  &kp DOT  ES_MINUS   &kp ESC
                          &kp LGUI  &lwr_num_layer  &kp SPACE    &kp RET  &rse_mouse_layer  &kp RALT
             >;
@@ -167,6 +174,19 @@
 &kp LCTRL  &trans       &trans          &trans          &trans  &trans      &kp KP_N0      &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_PLUS    &kp ESC
                                         &kp LGUI        &trans  &kp SPACE   &kp KP_ENTER   &kp KP_DOT  &kp RALT
             >;
+        };
+    };
+
+    key_overrides {
+        compatible = "zmk,key-overrides";
+
+        shift_dead_acute_to_grave: shift_dead_acute_to_grave {
+            bindings = <&ko_make_with_layers
+                (MOD_LSFT|MOD_RSFT)
+                &kp SQT
+                ZMK_LAYER_ANY
+                &kp GRAVE>;
+            suppress-modifiers = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
 };
