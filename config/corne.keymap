@@ -439,16 +439,16 @@
             display-name = "Raise Layer";
 
             // -----------------------------------------------------------------------------------------
-            // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BSPC |
-            // | SHFT |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  '   |
-            // | CTRL |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ESC   |
+            // |      |  !  |  "  |  #  |  $  |  %  |   |  &  |  /  |  (  |  )  |  =  | BSPC |
+            // | SHFT |  @  |  ¬  |  \  |  *  |  +  |   |  |  |  ^  |  [  |  ]  |  ~  |  '   |
+            // | CTRL |  <  |  >  |     |  ¡  |  -  |   |  ?  |  ¿  |  {  |  }  |  ;  |  ESC |
             //                    | GUI |     | SPC |   | SHFT |     | ALT |
 
             bindings = <
-&kp TAB    &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
-&kp LSHFT  &trans    &trans  &trans    &trans    &trans       &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp ES_SQT
-&kp LCTRL  &trans    &trans  &trans    &trans    &trans       &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp ESC
-                             &kp LGUI  &trans    &kp SPACE    &kp RSHFT    &trans     &kp RALT
+&trans     &kp ES_EXCL  &kp ES_DQT      &kp ES_HASH  &kp ES_DLLR   &kp ES_PRCNT   &kp ES_AMPS  &kp ES_FSLH     &kp ES_LPAR   &kp ES_RPAR  &kp ES_EQUAL  &kp BSPC
+&kp LSHFT  &kp ES_AT    &kp ES_NOT      &kp ES_BSLH  &kp ES_ASTRK  &kp ES_PLUS    &kp ES_PIPE  &kp ES_CARET    &kp ES_LBKT   &kp ES_RBKT  &kp ES_TILDE  &kp ES_SQT
+&kp LCTRL  &kp ES_LT    &kp ES_GT       &trans       &kp ES_IEXCL  &kp ES_MINUS   &kp ES_QMARK &kp ES_IQMARK   &kp ES_LBRC   &kp ES_RBRC  &kp ES_SEMI   &kp ESC
+                                        &kp LGUI     &trans        &kp SPACE      &kp RSHFT    &trans          &kp RALT
             >;
         };
 
