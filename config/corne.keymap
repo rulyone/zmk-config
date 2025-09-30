@@ -413,6 +413,15 @@
 
     };
 
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        lower_raise_adjust {
+            if-layers = <1 2>;
+            then-layer = <5>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -426,10 +435,10 @@
             //                    | GUI | LWR | SPC |   | SHFT | RSE  | ALT |
 
             bindings = <
-&kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T        &kp Y    &kp U  &kp I      &kp O    &kp P     &kp BSPC
-&sk LSHFT  &kp A  &kp S  &kp D     &kp F  &kp G        &kp H    &kp J  &kp K      &kp L    &kp ES_N_TILDE  &kp ES_ACUTE
-&kp LCTRL  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp N    &kp M  &kp COMMA  &kp DOT  &kp ES_MINUS   &kp RET
-                         &kp LGUI  &lwr_num_layer  &kp SPACE    &kp RSHFT  &rse_mouse_layer  &kp RALT
+&kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T        &kp Y        &kp U       &kp I               &kp O    &kp P          &kp BSPC
+&sk LSHFT  &kp A  &kp S  &kp D     &kp F  &kp G        &kp H        &kp J       &kp K               &kp L    &kp ES_N_TILDE &kp ES_ACUTE
+&kp LCTRL  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp N        &kp M       &kp COMMA           &kp DOT  &kp ES_MINUS   &kp RET
+                         &kp LGUI  &lwr_num_layer      &kp SPACE    &kp RSHFT   &rse_mouse_layer    &kp RALT
             >;
         };
 
@@ -443,10 +452,10 @@
             //                    | GUI |     | SPC |   | SHFT |  .  | ALT |
 
             bindings = <
-&kp TAB    &trans       &kp UP          &trans          &trans  &trans      &kp KP_SLASH   &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp PRCNT        &kp BSPC
-&sk LSHFT  &kp LEFT     &kp DOWN        &kp RIGHT       &trans  &trans      &kp KP_MINUS   &kp KP_N4   &kp KP_N5   &kp KP_N6   &kp KP_ASTERISK  &kp KP_EQUAL
-&kp LCTRL  &trans       &trans          &trans          &trans  &trans      &kp KP_N0      &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_PLUS      &kp KP_ENTER
-                                        &kp LGUI        &trans  &kp SPACE   &kp RSHFT      &kp KP_DOT  &kp RALT
+&kp TAB    &none        &kp UP          &none           &none  &none      &kp KP_SLASH   &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp PRCNT        &kp BSPC
+&sk LSHFT  &kp LEFT     &kp DOWN        &kp RIGHT       &none  &none      &kp KP_MINUS   &kp KP_N4   &kp KP_N5   &kp KP_N6   &kp KP_ASTERISK  &kp KP_EQUAL
+&kp LCTRL  &none        &none           &none           &none  &none      &kp KP_N0      &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_PLUS      &kp KP_ENTER
+                                        &kp LGUI        &none  &kp SPACE  &kp RSHFT      &kp KP_DOT  &kp RALT
             >;
         };
 
@@ -456,14 +465,14 @@
             // -----------------------------------------------------------------------------------------
             // |   `  |  !  |  "  |  #  |  $  |  %  |   |  &  |  (  |  )  |  =  |  ^  | BSPC |
             // | SHFT |  @  |  ¬  |  \  |  *  |  +  |   |  |  |  [  |  ]  |  ;  |  ~  |  '   |
-            // | CTRL |  <  |  ¿  |  º  |  ¡  |  -  |   |  ?  |  {  |  }  |  ,  |  .  |  ESC |
+            // | CTRL |  <  |  ¿  |  º  |  ¡  |  -  |   |  ?  |  {  |  }  |  ,  |  .  |  ENT |
             //                    | GUI |     | SPC |   | SHFT |     | ALT |
 
             bindings = <
 &kp ES_GRAVE     &kp ES_EXCL  &kp ES_DQT      &kp ES_HASH  &kp ES_DLLR   &kp ES_PRCNT   &kp ES_AMPS  &kp ES_LPAR     &kp ES_RPAR   &kp ES_EQUAL     &kp ES_CARET  &kp BSPC
 &sk LSHFT        &kp ES_AT    &kp ES_NOT      &kp ES_BSLH  &kp ES_ASTRK  &kp ES_PLUS    &kp ES_PIPE  &kp ES_LBKT     &kp ES_RBKT   &kp ES_SEMI      &kp ES_TILDE  &kp ES_SQT
-&kp LCTRL        &kp ES_LT    &kp ES_IQMARK   &kp ES_MORD  &kp ES_IEXCL  &kp ES_MINUS   &kp ES_QMARK &kp ES_LBRC     &kp ES_RBRC   &kp COMMA        &kp DOT       &kp ESC
-                                        &kp LGUI     &trans        &kp SPACE      &kp RSHFT    &trans          &kp RALT
+&kp LCTRL        &kp ES_LT    &kp ES_IQMARK   &kp ES_MORD  &kp ES_IEXCL  &kp ES_MINUS   &kp ES_QMARK &kp ES_LBRC     &kp ES_RBRC   &kp COMMA        &kp DOT       &kp RET
+                                              &kp LGUI     &none         &kp SPACE      &kp RSHFT    &none           &kp RALT
             >;
         };
 
@@ -475,10 +484,10 @@
 
         mouse_layer {
             bindings = <
-&trans      &trans        &trans        &trans  &trans  &trans    &trans          &mkp LCLK       &mmv MOVE_UP     &mkp RCLK        &trans     &trans
-&sk LSHFT   &trans        &trans        &trans  &trans  &trans    &msc SCRL_UP    &mmv MOVE_LEFT  &mmv MOVE_DOWN   &mmv MOVE_RIGHT  &trans     &trans
-&kp LCTRL   &trans        &trans        &trans  &trans  &trans    &msc SCRL_DOWN  &msc SCRL_LEFT  &msc SCRL_RIGHT  &trans           &trans     &kp RET
-                                        &trans  &trans  &trans    &kp RSHFT          &trans          &trans
+&none       &none        &none        &none  &none  &none    &none           &mkp LCLK       &mmv MOVE_UP     &mkp RCLK        &none     &none
+&sk LSHFT   &none        &none        &none  &none  &none    &msc SCRL_UP    &mmv MOVE_LEFT  &mmv MOVE_DOWN   &mmv MOVE_RIGHT  &none     &none
+&kp LCTRL   &none        &none        &none  &none  &none    &msc SCRL_DOWN  &msc SCRL_LEFT  &msc SCRL_RIGHT  &none            &none     &kp RET
+                                      &none  &none  &none    &kp RSHFT       &none           &none
             >;
         };
 
@@ -490,10 +499,27 @@
 
         num_layer {
             bindings = <
-&kp TAB    &bt BT_CLR   &bt BT_SEL 0    &bt BT_SEL 1    &trans  &trans      &kp KP_SLASH   &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp PRCNT      &kp BSPC
-&sk LSHFT  &trans       &trans          &trans          &trans  &trans      &kp KP_MINUS   &kp KP_N4   &kp KP_N5   &kp KP_N6   &kp KP_ASTERISK &kp KP_EQUAL
-&kp LCTRL  &trans       &trans          &trans          &trans  &trans      &kp KP_N0      &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_PLUS    &kp KP_ENTER
-                                        &kp LGUI        &trans  &kp SPACE   &kp RSHFT   &kp KP_DOT  &kp RALT
+&kp TAB    &bt BT_CLR   &bt BT_SEL 0    &bt BT_SEL 1    &none  &none      &kp KP_SLASH   &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp PRCNT      &kp BSPC
+&sk LSHFT  &none        &none           &none           &none  &none      &kp KP_MINUS   &kp KP_N4   &kp KP_N5   &kp KP_N6   &kp KP_ASTERISK &kp KP_EQUAL
+&kp LCTRL  &none        &none           &none           &none  &none      &kp KP_N0      &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_PLUS    &kp KP_ENTER
+                                        &kp LGUI        &none  &kp SPACE  &kp RSHFT      &kp KP_DOT  &kp RALT
+            >;
+        };
+
+        conditional_layer {
+            display-name = "Conditional Layer";
+                        // -----------------------------------------------------------------------------------------
+            // |  ESC | S_LF | UP  | S_RG |      |     |   |      |  F7  |  F8  |  F9  | F12 |      |
+            // |      | LFT  | DWN | RGT  |      |     |   | S_UP |  F4  |  F5  |  F6  | F11 |      |
+            // | LCLK | UNDO | CUT | COPY | PAST |     |   | S_DN |  F1  |  F2  |  F3  | F10 | RCLK |
+            //                     |      |      |     |   |      |      |      |
+
+            // Lower + Raise conditional layer;
+            bindings = <
+&kp ESC    &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT     &none      &none    &none           &kp F7  &kp F8  &kp F9  &kp F12   &none
+&none      &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT     &none      &none    &msc SCRL_UP    &kp F4  &kp F5  &kp F6  &kp F11   &none
+&mkp LCLK  &kp LG(Z)       &kp LG(X)       &kp LG(C)           &kp LG(V)  &none    &msc SCRL_DOWN  &kp F1  &kp F2  &kp F3  &kp F10   &mkp RCLK
+                           &none           &none               &none      &none    &none
             >;
         };
     };
