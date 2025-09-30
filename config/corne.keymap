@@ -454,15 +454,15 @@
             display-name = "Raise Layer";
 
             // -----------------------------------------------------------------------------------------
-            // |   `  |  !  |  "  |  #  |  $  |  %  |   |  &  |  /  |  (  |  )  |  =  | BSPC |
-            // | SHFT |  @  |  ¬  |  \  |  *  |  +  |   |  |  |  ^  |  [  |  ]  |  ~  |  '   |
-            // | CTRL |  <  |  >  |  º  |  ¡  |  -  |   |  ?  |  ¿  |  {  |  }  |  ;  |  ESC |
+            // |   `  |  !  |  "  |  #  |  $  |  %  |   |  &  |  (  |  )  |  =  |  ^  | BSPC |
+            // | SHFT |  @  |  ¬  |  \  |  *  |  +  |   |  |  |  [  |  ]  |  ;  |  ~  |  '   |
+            // | CTRL |  <  |  ¿  |  º  |  ¡  |  -  |   |  ?  |  {  |  }  |  ,  |  .  |  ESC |
             //                    | GUI |     | SPC |   | SHFT |     | ALT |
 
             bindings = <
-&kp ES_GRAVE     &kp ES_EXCL  &kp ES_DQT      &kp ES_HASH  &kp ES_DLLR   &kp ES_PRCNT   &kp ES_AMPS  &kp ES_FSLH     &kp ES_LPAR   &kp ES_RPAR  &kp ES_EQUAL  &kp BSPC
-&sk LSHFT        &kp ES_AT    &kp ES_NOT      &kp ES_BSLH  &kp ES_ASTRK  &kp ES_PLUS    &kp ES_PIPE  &kp ES_CARET    &kp ES_LBKT   &kp ES_RBKT  &kp ES_TILDE  &kp ES_SQT
-&kp LCTRL        &kp ES_LT    &kp ES_GT       &kp ES_MORD  &kp ES_IEXCL  &kp ES_MINUS   &kp ES_QMARK &kp ES_IQMARK   &kp ES_LBRC   &kp ES_RBRC  &kp ES_SEMI   &kp ESC
+&kp ES_GRAVE     &kp ES_EXCL  &kp ES_DQT      &kp ES_HASH  &kp ES_DLLR   &kp ES_PRCNT   &kp ES_AMPS  &kp ES_LPAR     &kp ES_RPAR   &kp ES_EQUAL     &kp ES_CARET  &kp BSPC
+&sk LSHFT        &kp ES_AT    &kp ES_NOT      &kp ES_BSLH  &kp ES_ASTRK  &kp ES_PLUS    &kp ES_PIPE  &kp ES_LBKT     &kp ES_RBKT   &kp ES_SEMI      &kp ES_TILDE  &kp ES_SQT
+&kp LCTRL        &kp ES_LT    &kp ES_IQMARK   &kp ES_MORD  &kp ES_IEXCL  &kp ES_MINUS   &kp ES_QMARK &kp ES_LBRC     &kp ES_RBRC   &kp COMMA        &kp DOT       &kp ESC
                                         &kp LGUI     &trans        &kp SPACE      &kp RSHFT    &trans          &kp RALT
             >;
         };
