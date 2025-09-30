@@ -435,18 +435,18 @@
 
         lower_layer {
             display-name = "Lower Layer";
-
+            
             // -----------------------------------------------------------------------------------------
-            // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
-            // | SHFT   | BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |   `  |
-            // | CTRL |     |     |     |     |     |   |     |     |     |     |     |  ESC    |
-            //                    | GUI |     | SPC |   | SHFT |     | ALT |
+            // |  TAB |     |  UP |     |     |     |   |  /  |  7  |  8  |  9  |  %  | BSPC |
+            // | SHFT | LFT | DWN | RGT |     |     |   |  -  |  4  |  5  |  6  |  *  |   =  |
+            // | CTRL |     |     |     |     |     |   |  0  |  1  |  2  |  3  |  +  |  ENT |
+            //                    | GUI |     | SPC |   | SHFT |  .  | ALT |
 
             bindings = <
-&kp TAB    &kp N1  &kp N2  &kp N3    &kp N4  &kp N5       &kp N6    &kp N7    &kp N8    &kp N9     &kp N0  &kp BSPC
-&kp LSHFT  &trans  &trans  &trans    &trans  &trans       &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &trans  &kp ES_GRAVE
-&kp LCTRL  &trans  &trans  &trans    &trans  &trans       &trans    &trans    &trans    &trans     &trans  &kp ESC
-                           &kp LGUI  &trans  &kp SPACE    &kp RSHFT   &trans    &kp RALT
+&kp TAB    &trans       &kp UP          &trans          &trans  &trans      &kp KP_SLASH   &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp PRCNT        &kp BSPC
+&kp LSHFT  &kp LEFT     &kp DOWN        &kp RIGHT       &trans  &trans      &kp KP_MINUS   &kp KP_N4   &kp KP_N5   &kp KP_N6   &kp KP_ASTERISK  &kp KP_EQUAL
+&kp LCTRL  &trans       &trans          &trans          &trans  &trans      &kp KP_N0      &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_PLUS      &kp KP_ENTER
+                                        &kp LGUI        &trans  &kp SPACE   &kp RSHFT      &kp KP_DOT  &kp RALT
             >;
         };
 
@@ -454,24 +454,30 @@
             display-name = "Raise Layer";
 
             // -----------------------------------------------------------------------------------------
-            // |      |  !  |  "  |  #  |  $  |  %  |   |  &  |  /  |  (  |  )  |  =  | BSPC |
+            // |   `  |  !  |  "  |  #  |  $  |  %  |   |  &  |  /  |  (  |  )  |  =  | BSPC |
             // | SHFT |  @  |  ¬  |  \  |  *  |  +  |   |  |  |  ^  |  [  |  ]  |  ~  |  '   |
             // | CTRL |  <  |  >  |  º  |  ¡  |  -  |   |  ?  |  ¿  |  {  |  }  |  ;  |  ESC |
             //                    | GUI |     | SPC |   | SHFT |     | ALT |
 
             bindings = <
-&trans     &kp ES_EXCL  &kp ES_DQT      &kp ES_HASH  &kp ES_DLLR   &kp ES_PRCNT   &kp ES_AMPS  &kp ES_FSLH     &kp ES_LPAR   &kp ES_RPAR  &kp ES_EQUAL  &kp BSPC
-&kp LSHFT  &kp ES_AT    &kp ES_NOT      &kp ES_BSLH  &kp ES_ASTRK  &kp ES_PLUS    &kp ES_PIPE  &kp ES_CARET    &kp ES_LBKT   &kp ES_RBKT  &kp ES_TILDE  &kp ES_SQT
-&kp LCTRL  &kp ES_LT    &kp ES_GT       &kp ES_MORD       &kp ES_IEXCL  &kp ES_MINUS   &kp ES_QMARK &kp ES_IQMARK   &kp ES_LBRC   &kp ES_RBRC  &kp ES_SEMI   &kp ESC
+&kp ES_GRAVE     &kp ES_EXCL  &kp ES_DQT      &kp ES_HASH  &kp ES_DLLR   &kp ES_PRCNT   &kp ES_AMPS  &kp ES_FSLH     &kp ES_LPAR   &kp ES_RPAR  &kp ES_EQUAL  &kp BSPC
+&kp LSHFT        &kp ES_AT    &kp ES_NOT      &kp ES_BSLH  &kp ES_ASTRK  &kp ES_PLUS    &kp ES_PIPE  &kp ES_CARET    &kp ES_LBKT   &kp ES_RBKT  &kp ES_TILDE  &kp ES_SQT
+&kp LCTRL        &kp ES_LT    &kp ES_GT       &kp ES_MORD  &kp ES_IEXCL  &kp ES_MINUS   &kp ES_QMARK &kp ES_IQMARK   &kp ES_LBRC   &kp ES_RBRC  &kp ES_SEMI   &kp ESC
                                         &kp LGUI     &trans        &kp SPACE      &kp RSHFT    &trans          &kp RALT
             >;
         };
 
+                    // -----------------------------------------------------------------------------------------
+            // |      |     |     |     |     |     |   |      | L_CK | UP  | R_CK |     |      |
+            // | SHFT |     |     |     |     |     |   | S_UP | LFT  | DWN | RGT  |     |      |
+            // | CTRL |     |     |     |     |     |   | S_DN | S_LF | S_RG|      |     |  ENT |
+            //                    |     |     |     |   | SHFT |      |     |
+
         mouse_layer {
             bindings = <
-&trans      &trans        &trans        &trans  &trans  &trans    &trans          &trans          &mmv MOVE_UP     &trans           &trans     &trans
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &trans  &trans  &trans    &msc SCRL_UP    &mmv MOVE_LEFT  &mmv MOVE_DOWN   &mmv MOVE_RIGHT  &mkp LCLK  &mkp RCLK
-&trans      &trans        &trans        &trans  &trans  &trans    &msc SCRL_DOWN  &msc SCRL_LEFT  &msc SCRL_RIGHT  &trans           &trans     &kp RET
+&trans      &trans        &trans        &trans  &trans  &trans    &trans          &mkp LCLK       &mmv MOVE_UP     &mkp RCLK        &trans     &trans
+&kp LSHFT   &trans        &trans        &trans  &trans  &trans    &msc SCRL_UP    &mmv MOVE_LEFT  &mmv MOVE_DOWN   &mmv MOVE_RIGHT  &trans     &trans
+&kp LCTRL   &trans        &trans        &trans  &trans  &trans    &msc SCRL_DOWN  &msc SCRL_LEFT  &msc SCRL_RIGHT  &trans           &trans     &kp RET
                                         &trans  &trans  &trans    &kp RSHFT          &trans          &trans
             >;
         };
