@@ -363,7 +363,7 @@
     
     behaviors {
         /* Lower (MO 1) on hold; toggle Num (layer 4) on double tap */
-        lwr_num_layer: lwr_num_layer {
+        lwr_caps_layer: lwr_caps_layer {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
@@ -438,7 +438,7 @@
 &kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T        &kp Y        &kp U       &kp I               &kp O    &kp P          &kp BSPC
 &sk LSHFT  &kp A  &kp S  &kp D     &kp F  &kp G        &kp H        &kp J       &kp K               &kp L    &kp ES_N_TILDE &kp ES_ACUTE
 &kp LCTRL  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp N        &kp M       &kp COMMA           &kp DOT  &kp ES_MINUS   &kp RET
-                         &kp LGUI  &lwr_num_layer      &kp SPACE    &kp RSHFT   &rse_mouse_layer    &kp RALT
+                         &kp LGUI  &lwr_caps_layer      &kp SPACE    &kp RSHFT   &rse_mouse_layer    &kp RALT
             >;
         };
 
@@ -472,7 +472,7 @@
 &kp ES_GRAVE     &kp ES_EXCL  &kp ES_DQT      &kp ES_HASH  &kp ES_DLLR      &kp ES_PRCNT   &kp ES_AMPS  &kp ES_LPAR     &kp ES_RPAR   &kp KP_SLASH     &kp ES_EQUAL  &kp BSPC
 &sk LSHFT        &kp ES_AT    &kp ES_NOT      &kp ES_BSLH  &kp ES_ASTRK     &kp ES_PLUS    &kp ES_PIPE  &kp ES_LBKT     &kp ES_RBKT   &kp ES_SEMI      &kp ES_TILDE  &kp ES_SQT
 &kp LCTRL        &kp ES_LT    &kp ES_IQMARK   &kp ES_MORD  &kp ES_IEXCL     &kp ES_MINUS   &kp ES_QMARK &kp ES_LBRC     &kp ES_RBRC   &kp COMMA        &kp ES_CARET  &kp RET
-                                              &kp LGUI     &lwr_num_layer   &kp SPACE      &kp RSHFT    &none           &kp RALT
+                                              &kp LGUI     &lwr_caps_layer   &kp SPACE      &kp RSHFT    &none           &kp RALT
             >;
         };
 
@@ -497,12 +497,18 @@
             // | CTRL |     |     |     |     |     |   |  0  |  1  |  2  |  3  |  .  |  ENT |
             //                    | GUI | LWR | SPC |   | SHFT |     | ALT |
 
-        num_layer {
+        caps_layer {
+                        // -----------------------------------------------------------------------------------------
+            // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
+            // | SHFT |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  Ñ  |  ´   |
+            // | CTRL |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  -  | ENT  |
+            //                    | GUI | LWR | SPC |   | SHFT | RSE  | ALT |
+
             bindings = <
-&kp TAB    &bt BT_CLR   &bt BT_SEL 0    &bt BT_SEL 1    &none  &none      &kp KP_SLASH   &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp KP_ASTERISK    &kp BSPC
-&sk LSHFT  &none        &none           &none           &none  &none      &kp KP_MINUS   &kp KP_N4   &kp KP_N5   &kp KP_N6   &kp KP_PLUS        &kp KP_EQUAL
-&kp LCTRL  &none        &none           &none           &none  &none      &kp KP_N0      &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_DOT         &kp KP_ENTER
-                                        &kp LGUI        &lwr_num_layer    &kp SPACE  &kp RSHFT      &none       &kp RALT
+&kp TAB    &kp LS(Q)  &kp LS(W)  &kp LS(E)     &kp LS(R)        &kp LS(T)        &kp LS(Y)        &kp LS(U)         &kp LS(I)               &kp LS(O)    &kp LS(P)          &kp BSPC
+&sk LSHFT  &kp LS(A)  &kp LS(S)  &kp LS(D)     &kp LS(F)        &kp LS(G)        &kp LS(H)        &kp LS(J)         &kp LS(K)               &kp LS(L)    &kp LS(ES_N_TILDE) &kp ES_ACUTE
+&kp LCTRL  &kp LS(Z)  &kp LS(X)  &kp LS(C)     &kp LS(V)        &kp LS(B)        &kp LS(N)        &kp LS(M)         &kp COMMA               &kp DOT      &kp ES_MINUS       &kp RET
+                                 &kp LGUI      &lwr_caps_layer   &kp SPACE        &kp RSHFT        &none             &kp RALT
             >;
         };
 
