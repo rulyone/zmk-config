@@ -463,15 +463,15 @@
             display-name = "Raise Layer";
 
             // -----------------------------------------------------------------------------------------
-            // |   `  |  !  |  "  |  #  |  $  |  %  |   |  &  |  (  |  )  |  =  |  ^  | BSPC |
+            // |   `  |  !  |  "  |  #  |  $  |  %  |   |  &  |  (  |  )  |  /  |  =  | BSPC |
             // | SHFT |  @  |  ¬  |  \  |  *  |  +  |   |  |  |  [  |  ]  |  ;  |  ~  |  '   |
-            // | CTRL |  <  |  ¿  |  º  |  ¡  |  -  |   |  ?  |  {  |  }  |  ,  |  .  |  ENT |
+            // | CTRL |  <  |  ¿  |  º  |  ¡  |  -  |   |  ?  |  {  |  }  |  ,  |  ^  |  ENT |
             //                    | GUI | LWR | SPC |   | SHFT |     | ALT |
 
             bindings = <
-&kp ES_GRAVE     &kp ES_EXCL  &kp ES_DQT      &kp ES_HASH  &kp ES_DLLR      &kp ES_PRCNT   &kp ES_AMPS  &kp ES_LPAR     &kp ES_RPAR   &kp ES_EQUAL     &kp ES_CARET  &kp BSPC
+&kp ES_GRAVE     &kp ES_EXCL  &kp ES_DQT      &kp ES_HASH  &kp ES_DLLR      &kp ES_PRCNT   &kp ES_AMPS  &kp ES_LPAR     &kp ES_RPAR   &kp KP_SLASH     &kp ES_EQUAL  &kp BSPC
 &sk LSHFT        &kp ES_AT    &kp ES_NOT      &kp ES_BSLH  &kp ES_ASTRK     &kp ES_PLUS    &kp ES_PIPE  &kp ES_LBKT     &kp ES_RBKT   &kp ES_SEMI      &kp ES_TILDE  &kp ES_SQT
-&kp LCTRL        &kp ES_LT    &kp ES_IQMARK   &kp ES_MORD  &kp ES_IEXCL     &kp ES_MINUS   &kp ES_QMARK &kp ES_LBRC     &kp ES_RBRC   &kp COMMA        &kp DOT       &kp RET
+&kp LCTRL        &kp ES_LT    &kp ES_IQMARK   &kp ES_MORD  &kp ES_IEXCL     &kp ES_MINUS   &kp ES_QMARK &kp ES_LBRC     &kp ES_RBRC   &kp COMMA        &kp ES_CARET  &kp RET
                                               &kp LGUI     &lwr_num_layer   &kp SPACE      &kp RSHFT    &none           &kp RALT
             >;
         };
