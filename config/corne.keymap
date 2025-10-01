@@ -480,14 +480,14 @@
             // |      |     |     |     |     |     |   |      | L_CK | UP  | R_CK |     |      |
             // | SHFT |     |     |     |     |     |   | S_UP | LFT  | DWN | RGT  |     |      |
             // | CTRL |     |     |     |     |     |   | S_DN | S_LF | S_RG|      |     |  ENT |
-            //                    |     |     |     |   | SHFT |      |     |
+            //                    |     |     |     |   | SHFT | RSE  |     |
 
         mouse_layer {
             bindings = <
-&none       &none        &none        &none  &none  &none    &none           &mkp LCLK       &mmv MOVE_UP     &mkp RCLK        &none     &none
-&sk LSHFT   &none        &none        &none  &none  &none    &msc SCRL_UP    &mmv MOVE_LEFT  &mmv MOVE_DOWN   &mmv MOVE_RIGHT  &none     &none
-&kp LCTRL   &none        &none        &none  &none  &none    &msc SCRL_DOWN  &msc SCRL_LEFT  &msc SCRL_RIGHT  &none            &none     &kp RET
-                                      &none  &none  &none    &kp RSHFT       &none           &none
+&none       &none        &none        &none  &none  &none    &none           &mkp LCLK           &mmv MOVE_UP     &mkp RCLK        &none     &none
+&sk LSHFT   &none        &none        &none  &none  &none    &msc SCRL_UP    &mmv MOVE_LEFT      &mmv MOVE_DOWN   &mmv MOVE_RIGHT  &none     &none
+&kp LCTRL   &none        &none        &none  &none  &none    &msc SCRL_DOWN  &msc SCRL_LEFT      &msc SCRL_RIGHT  &none            &none     &kp RET
+                                      &none  &none  &none    &kp RSHFT       &rse_mouse_layer    &none
             >;
         };
 
@@ -495,14 +495,14 @@
             // |  TAB |     |     |     |     |     |   |  /  |  7  |  8  |  9  |  *  | BSPC |
             // | SHFT |     |     |     |     |     |   |  -  |  4  |  5  |  6  |  +  |   =  |
             // | CTRL |     |     |     |     |     |   |  0  |  1  |  2  |  3  |  .  |  ENT |
-            //                    | GUI |     | SPC |   | SHFT |     | ALT |
+            //                    | GUI | LWR | SPC |   | SHFT |     | ALT |
 
         num_layer {
             bindings = <
 &kp TAB    &bt BT_CLR   &bt BT_SEL 0    &bt BT_SEL 1    &none  &none      &kp KP_SLASH   &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp KP_ASTERISK    &kp BSPC
 &sk LSHFT  &none        &none           &none           &none  &none      &kp KP_MINUS   &kp KP_N4   &kp KP_N5   &kp KP_N6   &kp KP_PLUS        &kp KP_EQUAL
 &kp LCTRL  &none        &none           &none           &none  &none      &kp KP_N0      &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_DOT         &kp KP_ENTER
-                                        &kp LGUI        &none  &kp SPACE  &kp RSHFT      &none       &kp RALT
+                                        &kp LGUI        &lwr_num_layer    &kp SPACE  &kp RSHFT      &none       &kp RALT
             >;
         };
 
