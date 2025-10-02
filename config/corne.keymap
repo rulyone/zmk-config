@@ -371,7 +371,7 @@
         };
 
         /* Raise (MO 2) on hold; toggle Mouse (layer 3) on double tap */
-        rse_mouse_layer: rse_mouse_layer {
+        rse_music_layer: rse_music_layer {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
@@ -438,7 +438,7 @@
 &kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T        &kp Y        &kp U       &kp I               &kp O    &kp P          &kp BSPC
 &sk LSHFT  &kp A  &kp S  &kp D     &kp F  &kp G        &kp H        &kp J       &kp K               &kp L    &kp ES_N_TILDE &kp ES_ACUTE
 &kp LCTRL  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp N        &kp M       &kp COMMA           &kp DOT  &kp ES_MINUS   &kp RET
-                         &kp LGUI  &lwr_caps_layer      &kp SPACE    &kp RSHFT   &rse_mouse_layer    &kp RALT
+                         &kp LGUI  &lwr_caps_layer      &kp SPACE    &kp RSHFT   &rse_music_layer    &kp RALT
             >;
         };
 
@@ -455,7 +455,7 @@
 &kp TAB    &none        &kp UP          &none           &none  &none      &kp KP_SLASH   &kp KP_N7          &kp KP_N8   &kp KP_N9   &kp KP_ASTERISK  &kp BSPC
 &sk LSHFT  &kp LEFT     &kp DOWN        &kp RIGHT       &none  &none      &kp KP_MINUS   &kp KP_N4          &kp KP_N5   &kp KP_N6   &kp KP_PLUS      &kp KP_EQUAL
 &kp LCTRL  &none        &none           &none           &none  &none      &kp KP_N0      &kp KP_N1          &kp KP_N2   &kp KP_N3   &kp KP_DOT       &kp KP_ENTER
-                                        &kp LGUI        &none  &kp SPACE  &kp RSHFT      &rse_mouse_layer   &kp RALT
+                                        &kp LGUI        &none  &kp SPACE  &kp RSHFT      &rse_music_layer   &kp RALT
             >;
         };
 
@@ -477,16 +477,16 @@
         };
 
         music_layer {
-            // |  TAB  | S_LF | UP  | S_RG | S_UP | QNTZ    |   | PENC | BRSH |  UP  | ERAS | SLIP | BSPC |
-            // | LSHFT | LFT  | DWN | RGT  | S_DN | SEL_ALL |   | SLCE | LEFT | DOWN | RIGH |      |      |
+            // |  TAB  | S_LF | UP  | S_RG | S_UP | RCLK    |   | PENC | BRSH |  UP  | ERAS | SLIP | BSPC |
+            // | LSHFT | LFT  | DWN | RGT  | S_DN | SEL_ALL |   | SLCE | LEFT | DOWN | RIGH | QNTZ |      |
             // | LCLK  | UNDO | CUT | COPY | PAST | PAST B  |   |  F5  |  F6  |  F7  |  F8  | F9   | ENT  |
-            //                      |  GUI | RCLK | SPACE   |   |      |  RSE | RALT |
+            //                      |  GUI | LWR  | SPACE   |   |      |  RSE | RALT |
 
             bindings = <
-&kp TAB    &msc SCRL_LEFT  &mmv MOVE_UP     &msc SCRL_RIGHT     &msc SCRL_UP    &kp RA(Q)        &kp P               &kp B              &kp UP      &kp E       &kp S   &kp BSPC
-&sk LSHFT  &mmv MOVE_LEFT  &mmv MOVE_DOWN   &mmv MOVE_RIGHT     &msc SCRL_DOWN  &kp LG(A)        &kp C               &kp LEFT           &kp DOWN    &kp RIGHT   &none   &none
-&mkp LCLK  &kp LG(Z)       &kp LG(X)        &kp LG(C)           &kp LG(V)       &kp LG(B)        &kp F5              &kp F6             &kp F7      &kp F8      &kp F9  &kp RET
-                                            &kp LGUI            &mkp RCLK       &kp SPACE        &none               &rse_mouse_layer   &kp RALT
+&kp TAB    &msc SCRL_LEFT  &mmv MOVE_UP     &msc SCRL_RIGHT     &msc SCRL_UP    &mkp RCLK        &kp P               &kp B              &kp UP      &kp E       &kp S       &kp BSPC
+&sk LSHFT  &mmv MOVE_LEFT  &mmv MOVE_DOWN   &mmv MOVE_RIGHT     &msc SCRL_DOWN  &kp LG(A)        &kp C               &kp LEFT           &kp DOWN    &kp RIGHT   &kp RA(Q)   &none
+&mkp LCLK  &kp LG(Z)       &kp LG(X)        &kp LG(C)           &kp LG(V)       &kp LG(B)        &kp F5              &kp F6             &kp F7      &kp F8      &kp F9      &kp RET
+                                            &kp LGUI            &lwr_caps_layer &kp SPACE        &none               &rse_music_layer   &kp RALT
             >;
         };
 
